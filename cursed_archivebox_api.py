@@ -45,6 +45,7 @@ def run_bg_task(cmd):
 
 @get('/add')
 def add_to_archive() -> str:
+    response.set_header('Content-Type', 'application/json')
     url = request.query.url or None
     depth = request.query.depth or None
     tag = request.query.tag or None

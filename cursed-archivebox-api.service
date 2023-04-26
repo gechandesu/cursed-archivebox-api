@@ -1,0 +1,14 @@
+[Unit]
+Description=Cursed API for ArchiveBox
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+Environment=ARCHIVEBOX_BIN="docker compose -f /opt/archivebox/docker-compose.yml run archivebox"
+WorkingDirectory=/opt/cursed_archivebox_api
+ExecStart=/opt/cursed_archivebox_api/env/bin/python cursed_archivebox_api.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
